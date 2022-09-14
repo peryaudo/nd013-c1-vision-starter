@@ -11,7 +11,7 @@ def create_symlinks(sources, destination):
     os.makedirs(destination, exist_ok=True)
 
     for source in sources:
-        os.symlink(source, os.path.join(destination, os.path.basename(source)))
+        os.symlink(os.path.abspath(source), os.path.join(destination, os.path.basename(source)))
 
 def split(source, destination):
     """

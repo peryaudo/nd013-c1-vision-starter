@@ -1,5 +1,5 @@
 import argparse
-import glob
+from glob import glob
 import os
 import random
 
@@ -7,6 +7,11 @@ import numpy as np
 
 from utils import get_module_logger
 
+def create_symlinks(sources, destination):
+    os.makedirs(destination, exist_ok=True)
+
+    for source in sources:
+        os.symlink(source, os.path.join(destination, os.path.basename(source)))
 
 def split(source, destination):
     """
@@ -17,7 +22,18 @@ def split(source, destination):
         - source [str]: source data directory, contains the processed tf records
         - destination [str]: destination data directory, contains 3 sub folders: train / val / test
     """
-    # TODO: Implement function
+    tfrecords = glob(source + '/*.tfrecord')
+
+    train_cnt = int(len(tfrecords) * 0.8)
+    val_cnt = min(int(len(tfrecords) * 0.1), len(tfrecords) - train_cnt)
+
+    trains = tfrecords[0:train_cnt]
+    vals = tfrecords[train_cnt:train_cnt+val_cnt]
+    tests = tfrecords[train_cnt+val_cnt:]
+
+    create_symlinks(trains, os.path.join(destination, 'train'))
+    create_symlinks(vals, os.path.join(destination, 'val'))
+    create_symlinks(tests, os.path.join(destination, 'test'))
 
 
 if __name__ == "__main__":

@@ -97,3 +97,7 @@ RUN git clone https://github.com/tensorflow/models.git && \
 # Install google cloud SDK
 RUN curl -sSL https://sdk.cloud.google.com > /tmp/gcl && bash /tmp/gcl --install-dir=~/gcloud --disable-prompts
 ENV PATH="$PATH:/root/gcloud/google-cloud-sdk/bin"
+
+RUN pip uninstall keras-nightly
+RUN pip install numpy==1.17.4
+

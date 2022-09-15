@@ -52,3 +52,5 @@ INFO:tensorflow:        + Loss/localization_loss: 0.317194
 INFO:tensorflow:        + Loss/classification_loss: 0.235581
 INFO:tensorflow:        + Loss/regularization_loss: 0.237745
 INFO:tensorflow:        + Loss/total_loss: 0.790520
+
+python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/experiment2/exported/saved_model --tf_record_path split/val/segment-10072231702153043603_5725_000_5745_000_with_camera_labels.tfrecord --config_path experiments/experiment2/pipeline_new.config --output_path animation2.gif

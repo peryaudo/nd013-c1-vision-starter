@@ -34,3 +34,21 @@ INFO:tensorflow:	+ Loss/localization_loss: 0.897523
 INFO:tensorflow:	+ Loss/classification_loss: 0.710646
 INFO:tensorflow:	+ Loss/regularization_loss: 0.048756
 INFO:tensorflow:	+ Loss/total_loss: 1.656925
+
+INFO:tensorflow:Eval metrics at step 24000
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP: 0.183033
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP@.50IOU: 0.357934
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP@.75IOU: 0.159025
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP (small): 0.096755
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP (medium): 0.463644
+INFO:tensorflow:        + DetectionBoxes_Precision/mAP (large): 0.818684
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@1: 0.041746
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@10: 0.175257
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@100: 0.257493
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (small): 0.180164
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (medium): 0.539461
+INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (large): 0.843956
+INFO:tensorflow:        + Loss/localization_loss: 0.317194
+INFO:tensorflow:        + Loss/classification_loss: 0.235581
+INFO:tensorflow:        + Loss/regularization_loss: 0.237745
+INFO:tensorflow:        + Loss/total_loss: 0.790520

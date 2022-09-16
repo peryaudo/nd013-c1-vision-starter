@@ -34,24 +34,23 @@ With `create_splits.py`, I split the dataset into three: training (train), valid
 
 #### Reference experiment
 
-    INFO:tensorflow:Eval metrics at step 6000
-    I0914 04:49:03.254420 140533609854784 model_lib_v2.py:1015] Eval metrics at step 6000
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP: 0.000185
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP@.50IOU: 0.000793
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP@.75IOU: 0.000033
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP (small): 0.000021
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP (medium): 0.003142
-    INFO:tensorflow:	+ DetectionBoxes_Precision/mAP (large): 0.005817
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@1: 0.001257
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@10: 0.004094
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@100: 0.015505
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@100 (small): 0.004171
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@100 (medium): 0.036900
-    INFO:tensorflow:	+ DetectionBoxes_Recall/AR@100 (large): 0.232967
-    INFO:tensorflow:	+ Loss/localization_loss: 0.793256
-    INFO:tensorflow:	+ Loss/classification_loss: 0.846861
-    INFO:tensorflow:	+ Loss/regularization_loss: 1.790260
-    INFO:tensorflow:	+ Loss/total_loss: 3.430376
+    INFO:tensorflow:Eval metrics at step 24000
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP: 0.049726
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP@.50IOU: 0.105540
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP@.75IOU: 0.042007
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP (small): 0.021489
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP (medium): 0.130668
+    INFO:tensorflow:        + DetectionBoxes_Precision/mAP (large): 0.271001
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@1: 0.016680
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@10: 0.058279
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@100: 0.110761
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (small): 0.068510
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (medium): 0.236955
+    INFO:tensorflow:        + DetectionBoxes_Recall/AR@100 (large): 0.432967
+    INFO:tensorflow:        + Loss/localization_loss: 0.533029
+    INFO:tensorflow:        + Loss/classification_loss: 0.546793
+    INFO:tensorflow:        + Loss/regularization_loss: 0.453309
+    INFO:tensorflow:        + Loss/total_loss: 1.533131
 
 #### Improve on the reference
 

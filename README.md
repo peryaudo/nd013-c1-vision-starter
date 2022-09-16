@@ -127,8 +127,8 @@ Result:
 ##### experiment2
 
 * Added augumentations.
-  * random_adjust_brightness, random_adjust_hue, random_adjust_saturation are added. In ETA many different lighting conditions were seen.
-  * random_black_patches is added. In EDA objects were often occluded.
+  * random_adjust_brightness, random_adjust_hue, random_adjust_saturation are added. In ETA many different lighting conditions were seen, so I expected them to replicate those conditions.
+  * random_black_patches is added. In EDA objects were often occluded, so I expected them to replicate those conditions.
 * Reverted back to momentum optimizer but substantially lowered learning rate. learning_rate_base: 0.001 warmup_learning_rate: 0.0003 
 
 Result:

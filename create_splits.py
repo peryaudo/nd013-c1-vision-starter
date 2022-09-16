@@ -7,20 +7,34 @@ import numpy as np
 
 from utils import get_module_logger
 
+
 def create_symlinks(sources, destination):
+    """
+    Create symbolic links for files in the specified directory.
+
+    args:
+        - sources: a list of file names which the symbolic links will point at
+        - destination: destination directory
+    """
     os.makedirs(destination, exist_ok=True)
 
     for source in sources:
-        os.symlink(os.path.abspath(source), os.path.join(destination, os.path.basename(source)))
+        os.symlink(
+                os.path.abspath(source),
+                os.path.join(destination, os.path.basename(source)))
+
 
 def split(source, destination):
     """
-    Create three splits from the processed records. The files should be moved to new folders in the
-    same directory. This folder should be named train, val and test.
+    Create three splits from the processed records. The files should be moved
+    to new folders in the same directory. This folder should be named train,
+    val and test.
 
     args:
-        - source [str]: source data directory, contains the processed tf records
-        - destination [str]: destination data directory, contains 3 sub folders: train / val / test
+        - source [str]: source data directory, contains the processed tf
+          records
+        - destination [str]: destination data directory, contains 3 sub
+          folders: train / val / test
     """
     tfrecords = glob(source + '/*.tfrecord')
 
@@ -37,7 +51,8 @@ def split(source, destination):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Split data into training / validation / testing')
+    parser = argparse.ArgumentParser(
+            description='Split data into training / validation / testing')
     parser.add_argument('--source', required=True,
                         help='source data directory')
     parser.add_argument('--destination', required=True,

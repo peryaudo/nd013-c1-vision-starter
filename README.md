@@ -23,7 +23,7 @@ In the Docker image, I ran the following to download the dataset:
 Then after implementing create_splits.py, I ran the following to split data.
 
     mkdir /app/project/split
-    python create_splits.py --source /app/project/data /app/project/split
+    python create_splits.py --source /app/project/data/processed /app/project/split
 
 For training and evaluation, I followed the instruction of the course material.
 

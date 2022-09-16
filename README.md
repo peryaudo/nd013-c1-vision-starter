@@ -40,7 +40,9 @@ From visualized annotations, I could tell the following:
 * The majority of objects are cars.
 * There are many small objects in the images.
 * There are many overlapping objects in the images.
+  * Small objects and overlapping objects might make it difficult to effectively apply one stage detector.
 * I didn't see any bicycles in the visualization of 10 images.
+* There are many different lighting conditions in the dataset.
 
 Then I visualized distribution of classes of 50 random images:
 
@@ -62,8 +64,6 @@ With `create_splits.py`, I split the dataset into three: training (train), valid
 
 #### Reference experiment
 
-
-
 | Metrics Name                          | Value    |
 | ------------------------------------- | -------- |
 | DetectionBoxes_Precision/mAP          | 0.049726 |
@@ -83,9 +83,27 @@ With `create_splits.py`, I split the dataset into three: training (train), valid
 | Loss/regularization_loss              | 0.453309 |
 | Loss/total_loss                       | 1.533131 |
 
+Overall mAP are low. mAP gets lower as the bounding boxes get smaller.
+
+Also, according to Tensorboard, total loss exploded right after the training started:
+
+[Exploding loss for reference experiment](reference_tensorboard.png)
+
+It indicates that the learning rate might be too high especially around the beginning.
+
 #### Improve on the reference
 
-experiment1:
+##### experiment1
+
+Changes from reference:
+
+* Changed momentum optimizer to Adam, suspecting the optimizer might be causing the total loss explosion.
+* Lower the learning_rate_base to 0.03 from 0.04
+
+Result:
+
+* The result actually worsened from reference. Although we did not see explosion in total loss this time, even mAP for larger objects became very low. In fact, I tried to create animation from this model but no object was detected. 
+
 
 | Metrics Name                          | Value    |
 | ------------------------------------- | -------- |
@@ -106,7 +124,17 @@ experiment1:
 | Loss/regularization_loss | 0.048756 |
 | Loss/total_loss | 1.656925 |
 
-experiment2:
+##### experiment2
+
+* Added augumentations.
+  * random_adjust_brightness, random_adjust_hue, random_adjust_saturation are added. In ETA many different lighting conditions were seen.
+  * random_black_patches is added. In EDA objects were often occluded.
+* Reverted back to momentum optimizer but substantially lowered learning rate. learning_rate_base: 0.001 warmup_learning_rate: 0.0003 
+
+Result:
+
+* This is the best model among three. Especially for large objects, we see mAP of ~0.82 and AR of ~0.84.
+* For small objects however, detection still remains challenging. As expected during EDA, the model struggled to detect small objects. The problem might be mitigated by using two stage detectors instead.
 
 | Metrics Name                          | Value    |
 | ------------------------------------- | -------- |
@@ -126,3 +154,13 @@ experiment2:
 | Loss/classification_loss | 0.235581 |
 | Loss/regularization_loss | 0.237745 |
 | Loss/total_loss | 0.790520 |
+
+Here's the loss change throughout the training shown in Tensorboard:
+
+[Loss constantly getting lower](experiment2_tensorboard.png)
+
+Unlike the reference model, I did not see any loss explosion at the beginning, although near the end of the training I saw very little change in loss.
+
+In the animation generated from the model, I could see the majority of vehicles detected, although it is sometimes noticed that in some frames when vehicles are distant, they are undetected.
+
+[Animation](animation2.gif)

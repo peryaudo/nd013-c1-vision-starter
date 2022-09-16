@@ -87,7 +87,7 @@ Overall mAP are low. mAP gets lower as the bounding boxes get smaller.
 
 Also, according to Tensorboard, total loss exploded right after the training started:
 
-[Exploding loss for reference experiment](reference_tensorboard.png)
+[Tensorboard for reference](experiment2_tensorboard.png)
 
 It indicates that the learning rate might be too high especially around the beginning.
 
@@ -124,6 +124,10 @@ Result:
 | Loss/regularization_loss | 0.048756 |
 | Loss/total_loss | 1.656925 |
 
+[Tensorboard for experiment1](experiment1_tensorboard.png)
+
+The explosion of the total loss at the beginning was not seen, although the loss was relatively high from the beginning.
+
 ##### experiment2
 
 * Added augumentations.
@@ -157,7 +161,7 @@ Result:
 
 Here's the loss change throughout the training shown in Tensorboard:
 
-[Loss constantly getting lower](experiment2_tensorboard.png)
+[Tensorboard for experiment2](experiment2_tensorboard.png)
 
 Unlike the reference model, I did not see any loss explosion at the beginning, although near the end of the training I saw very little change in loss.
 

@@ -41,7 +41,7 @@ From visualized annotations, I could tell the following:
 * There are many small objects in the images.
 * There are many overlapping objects in the images.
   * Small objects and overlapping objects might make it difficult to effectively apply one stage detector.
-* I didn't see any bicycles in the visualization of 10 images.
+* Bicycles are very rare, in fact I only see one bicycle in the visualization.
 * There are many different lighting conditions in the dataset.
 
 Then I visualized distribution of classes of 50 random images:
